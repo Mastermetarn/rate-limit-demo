@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive token bucket API rate limiting demo.">
+    <title>API Rate Limit Demo</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <script src="app.js?v=4" defer></script>
+</head>
+<body>
+    <main class="shell">
+        <nav class="topbar" aria-label="Portfolio navigation">
+            <a class="back-link" href="/">
+                <span aria-hidden="true">←</span>
+                Back to portfolio
+            </a>
+        </nav>
+
+        <header class="hero">
+            <h1>Rate limiting demo</h1>
+            <p class="lede">
+                A token bucket allows a burst of 100 requests, then refills at an average rate of 100 tokens per minute.
+            </p>
+        </header>
+
+        <section class="panel bucket-panel" aria-labelledby="bucket-heading">
+            <div class="bucket-heading">
+                <div>
+                    <h2 id="bucket-heading">Available tokens</h2>
+                    <p class="hint">One accepted request consumes one token.</p>
+                </div>
+                <output id="token-value" class="token-value">100 / 100</output>
+            </div>
+            <div class="meter" role="progressbar" aria-label="Available API tokens" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                <div id="meter-fill" class="meter-fill"></div>
+            </div>
+            <p id="refill-status" class="refill-status">100 tokens per minute · 1.67 tokens per second</p>
+        </section>
+
+        <section class="controls" aria-label="Demo controls">
+            <button id="single-request" class="button primary" type="button">Send one request</button>
+            <button id="start-flood" class="button danger" type="button">Start 20 req/s</button>
+            <button id="stop-flood" class="button secondary" type="button" disabled>Stop</button>
+            <span id="run-state" class="run-state" aria-live="polite">Idle</span>
+        </section>
+
+        <section class="stats" aria-label="Request statistics">
+            <article class="stat">
+                <span>Total</span>
+                <strong id="total-count">0</strong>
+            </article>
+            <article class="stat success">
+                <span>Accepted</span>
+                <strong id="success-count">0</strong>
+            </article>
+            <article class="stat limited">
+                <span>HTTP 429</span>
+                <strong id="limited-count">0</strong>
+            </article>
+            <article class="stat error">
+                <span>Errors</span>
+                <strong id="error-count">0</strong>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>Recent responses</h2>
+            <ol id="response-log" class="response-log" aria-live="polite">
+                <li class="empty-log">No requests yet.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>
