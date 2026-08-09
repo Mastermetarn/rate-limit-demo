@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Adrian Norum</title>
+  <rect width="64" height="64" rx="14" fill="#1f4b99" />
+  <path d="M0 48 64 18v32c0 7.7-6.3 14-14 14H14C6.3 64 0 57.7 0 50Z" fill="#295ec7" />
+  <text x="31" y="41" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="27"
+    font-weight="700" letter-spacing="-2" text-anchor="middle">AN</text>
+</svg>
